@@ -1,38 +1,78 @@
-
 #include <stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include <windows.h>
 
 
-int Recursive(int n, int m)
+typedef void (*PFunc)(int*);
+
+void DispResult(int* s)
 {
-	m--;
 
-	if (m <= 0)
-	{
+	printf("%d秒待つ\n", *s);
 
-		return(n);
+}
 
-	}
-
-	return (n + Recursive(n * 2 - 50, m));
+void SetTimeout(PFunc a, int& second)
+{
+	a(&second);
+	Sleep(second * 1000);
 
 }
 
 int main()
 {
-	int a = 0;
-	int b = 8;
-	int c = 100;
-	int d = 1072;
 
-	a = b * d;
+	srand((unsigned int)time(NULL));
 
-	int result;
+	int b = 0;
+	int c = 3;
+	
+	int Dice;
 
-	result = Recursive(c, b);
+	Dice = rand() % 6 + 1;
+	PFunc a;
+	a = DispResult;
 
-	printf("%d時間分働いた再帰的な賃金 = %d\n", b, result);
+	printf("0か1を入力してください\n");
+	scanf_s("&d", &b);
 
-	printf("%d時間分の働いた一般的な賃金 = %d\n", b, a);
+	if (b == 0)
+	{
+		if (Dice % 2 == 0)
+		{
+			SetTimeout(a, c);
+
+			printf("正解\n");
+
+		}
+		else
+		{
+			SetTimeout(a, c);
+			printf("不正解\n");
+
+		}
+	}
+	else
+	{
+		if (Dice % 2 == 1)
+		{
+			SetTimeout(a, c);
+
+			printf("正解\n");
+		}
+		else
+		{
+			SetTimeout(a, c);
+
+			printf("不正解\n");
+
+		}
+	}
+
+	printf("正解は %d でした", Dice);
 
 	return 0;
+
+
 }
