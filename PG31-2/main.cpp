@@ -2,18 +2,11 @@
 #include<stdlib.h>
 #include<time.h>
 #include <windows.h>
+#include <functional>
 
 
-typedef void (*PFunc)(int*);
 
-void DispResult(int* s)
-{
-
-	printf("%d•b‘Ò‚Â\n", *s);
-
-}
-
-void SetTimeout(PFunc a, int& second)
+void SetTimeout(std::function<void(int*)> a, int& second)
 {
 	a(&second);
 	Sleep(second * 1000);
@@ -22,7 +15,7 @@ void SetTimeout(PFunc a, int& second)
 
 int main()
 {
-
+	std::function<void(int*)> fx = [](int* s) {printf("%d•b‘Ò‚Â\n", *s); };
 	srand((unsigned int)time(NULL));
 
 	int b = 0;
@@ -31,8 +24,7 @@ int main()
 	int Dice;
 
 	Dice = rand() % 6 + 1;
-	PFunc a;
-	a = DispResult;
+	
 
 	printf("0‚©1‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\n");
 	scanf_s("&d", &b);
@@ -41,14 +33,14 @@ int main()
 	{
 		if (Dice % 2 == 0)
 		{
-			SetTimeout(a, c);
+			SetTimeout(fx, c);
 
 			printf("³‰ğ\n");
 
 		}
 		else
 		{
-			SetTimeout(a, c);
+			SetTimeout(fx, c);
 			printf("•s³‰ğ\n");
 
 		}
@@ -57,13 +49,13 @@ int main()
 	{
 		if (Dice % 2 == 1)
 		{
-			SetTimeout(a, c);
+			SetTimeout(fx, c);
 
 			printf("³‰ğ\n");
 		}
 		else
 		{
-			SetTimeout(a, c);
+			SetTimeout(fx, c);
 
 			printf("•s³‰ğ\n");
 
