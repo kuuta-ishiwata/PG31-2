@@ -13,9 +13,9 @@ void DispResult(int* s)
 
 }
 
-void SetTimeout(PFunc a, int& second)
+void SetTimeout(PFunc p, int& second)
 {
-	a(&second);
+	p(&second);
 	Sleep(second * 1000);
 
 }
@@ -25,30 +25,33 @@ int main()
 
 	srand((unsigned int)time(NULL));
 
-	int b = 0;
-	int c = 3;
-	
+	int n = 0;
+	int m = 3;
 	int Dice;
-
 	Dice = rand() % 6 + 1;
-	PFunc a;
-	a = DispResult;
+
+
+	PFunc p;
+	p = DispResult;
 
 	printf("0‚©1‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\n");
-	scanf_s("&d", &b);
 
-	if (b == 0)
+	scanf_s("&d", &n);
+
+	SetTimeout(p, m);
+
+	if (n == 0)
 	{
 		if (Dice % 2 == 0)
 		{
-			SetTimeout(a, c);
+			
 
 			printf("³‰ğ\n");
 
 		}
 		else
 		{
-			SetTimeout(a, c);
+			
 			printf("•s³‰ğ\n");
 
 		}
@@ -57,14 +60,12 @@ int main()
 	{
 		if (Dice % 2 == 1)
 		{
-			SetTimeout(a, c);
 
 			printf("³‰ğ\n");
 		}
 		else
 		{
-			SetTimeout(a, c);
-
+			
 			printf("•s³‰ğ\n");
 
 		}
