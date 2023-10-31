@@ -6,9 +6,9 @@
 
 
 
-void SetTimeout(std::function<void(int*)> a, int& second)
+void SetTimeout(std::function<void(int*)> p, int& second)
 {
-	a(&second);
+	p(&second);
 	Sleep(second * 1000);
 
 }
@@ -18,51 +18,48 @@ int main()
 	std::function<void(int*)> fx = [](int* s) {printf("%d•b‘Ò‚Â\n", *s); };
 	srand((unsigned int)time(NULL));
 
-	int b = 0;
-	int c = 3;
-	
-	int Dice;
+	int n = 0;
+	int m = 3;
+	int dice;
 
-	Dice = rand() % 6 + 1;
-	
-
+	dice = rand() % 6 + 1;
 	printf("0‚©1‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\n");
-	scanf_s("&d", &b);
+	scanf_s("&d", &n);
 
-	if (b == 0)
+	SetTimeout(fx, m);
+
+	if (n == 0)
 	{
-		if (Dice % 2 == 0)
+		if (dice % 2 == 0)
 		{
-			SetTimeout(fx, c);
+			
 
 			printf("³‰ğ\n");
 
 		}
 		else
 		{
-			SetTimeout(fx, c);
+			
 			printf("•s³‰ğ\n");
 
 		}
 	}
 	else
 	{
-		if (Dice % 2 == 1)
+		if (dice % 2 == 1)
 		{
-			SetTimeout(fx, c);
-
+			
 			printf("³‰ğ\n");
 		}
 		else
 		{
-			SetTimeout(fx, c);
-
+			
 			printf("•s³‰ğ\n");
 
 		}
 	}
 
-	printf("³‰ğ‚Í %d ‚Å‚µ‚½", Dice);
+	printf("³‰ğ‚Í %d ‚Å‚µ‚½", dice);
 
 	return 0;
 
