@@ -27,8 +27,8 @@ int main()
 
 	int n = 0;
 	int m = 3;
-	int Dice;
-	Dice = rand() % 6 + 1;
+	int dice;
+	dice = rand() % 6 + 1;
 
 
 	PFunc p;
@@ -42,7 +42,7 @@ int main()
 
 	if (n == 0)
 	{
-		if (Dice % 2 == 0)
+		if (dice % 2 == 0)
 		{
 			
 
@@ -58,7 +58,7 @@ int main()
 	}
 	else
 	{
-		if (Dice % 2 == 1)
+		if (dice % 2 == 1)
 		{
 
 			printf("ê≥â\n");
@@ -71,7 +71,7 @@ int main()
 		}
 	}
 
-	printf("ê≥âÇÕ %d Ç≈ÇµÇΩ", Dice);
+	printf("ê≥âÇÕ %d Ç≈ÇµÇΩ", dice);
 
 	return 0;
 
