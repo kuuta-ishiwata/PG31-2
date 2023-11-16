@@ -1,27 +1,36 @@
-#pragma once
+﻿#pragma once
 class Enemy
 {
-private:
-	
-	enum Phase
-	{
-
-	};
-
 public:
 
-	void Update();
+    void Update();
+
+    bool isGameLoop() { return GameLoop_; }
 
 private:
 
-	void Approach();
-	void Leave();
+    enum class Phase
+    {
+        kApproach,
+        kFire,
+        kLeave
+    };
 
-private:
-	Phase phase_;
-		
+    //接近
+    void Approach();
+    //攻撃
+    void Fire();
+    //離脱
+    void Leave();
+
+    //メンバ変数
+    Phase phase = Phase::kApproach;
+
+    static void (Enemy::* FuncTable[])();
+
+    bool GameLoop_ = true;
+
 
 };
-
 
 
