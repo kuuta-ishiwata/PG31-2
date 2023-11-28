@@ -1,38 +1,27 @@
 
 #include <stdio.h>
 
-
-int Recursive(int n, int m)
-{
-	m--;
-
-	if (m <= 0)
-	{
-
-		return(n);
-
-	}
-
-	return (n + Recursive(n * 2 - 50, m));
-
-}
+#include "Police.h"
+#include "Ambulance.h"
 
 int main()
 {
-	int a = 0;
-	int b = 8;
-	int c = 100;
-	int d = 1072;
+	printf("出現\n");
+	Car* Cars[2];
 
-	a = b * d;
+	Cars[0] = new Police;
+	Cars[1] = new Ambulance;
 
-	int result;
+	printf("\n咆哮\n");
 
-	result = Recursive(c, b);
+	Cars[0]->Purr();
+	Cars[1]->Purr();
 
-	printf("%d時間分働いた再帰的な賃金 = %d\n", b, result);
-
-	printf("%d時間分の働いた一般的な賃金 = %d\n", b, a);
+	printf("\n帰宅\n");
+	for (int i = 0; i < 2; i++)
+	{
+		delete Cars[i];
+	}
 
 	return 0;
 }
