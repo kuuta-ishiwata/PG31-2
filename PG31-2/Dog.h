@@ -8,7 +8,7 @@ public:
 
 	virtual ~Dog();
 
-	virtual void Cry();
+	virtual void Cry() = 0;;
 
 protected:
 

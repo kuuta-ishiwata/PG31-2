@@ -1,17 +1,19 @@
 #pragma once
-class Cat
+class Bird
 {
 public:
 
-	Cat();
-
-	virtual ~Cat();
+	Bird();
+	
+	virtual ~Bird();
 
 	virtual void Cry() = 0;;
 
 protected:
 
 	const char* name;
+
+
 
 };
 
